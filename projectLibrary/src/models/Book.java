@@ -2,15 +2,15 @@ package models;
 
 import java.util.Objects;
 
-public class book {
+public class Book {
     private int id;
     private String title;
     private float price;
 
-    public book() {
+    public Book() {
     }
 
-    public book(int id, String title, float price) {
+    public Book(int id, String title, float price) {
         this.id = id;
         this.title = title;
         this.price = price;
@@ -46,7 +46,7 @@ public class book {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        book book = (book) o;
+        Book book = (Book) o;
         return id == book.id && Float.compare(book.price, price) == 0 && Objects.equals(title, book.title);
     }
 
