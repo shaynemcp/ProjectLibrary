@@ -8,6 +8,10 @@ public class Menu {
 
     private static Book book;
 
+    public static void prompt() {
+        System.out.println("Welcome to Project Library. Enter the integer corresponding to the action you would like to take.");
+        System.out.print(" Enter 1 to add a book \n Enter 2 to remove a book \n Enter 3 to find a book by id \n Enter 4 to View all books \n");
+    }
     public static void ask() {
         Scanner menu = new Scanner(System.in);
         int choice = menu.nextInt();
