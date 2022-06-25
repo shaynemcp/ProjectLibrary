@@ -14,8 +14,10 @@ public class Menu {
     }
     public static void ask() {
         Scanner menu = new Scanner(System.in);
-        int choice = menu.nextInt();
+        int choice;
         do {
+            choice = menu.nextInt();
+
             switch (choice) {
                 case 1:
                     Inventory.addBook(book);
@@ -25,11 +27,12 @@ public class Menu {
                 case 3:
                     break;
                 case 4:
+                    Inventory.displayAllBooks();
                     break;
                 case 9:
                     break;
             }
-        } while (choice > 0);
+        } while (choice != 9);
     }
 
 }
