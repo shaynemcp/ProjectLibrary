@@ -1,12 +1,16 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Inventory {
+    Book book;
 
+    public  Inventory() {
+    }
 
-    private ArrayList<Book> inventory = new ArrayList<Book>();
+    static List<Book> Books = new ArrayList<>();
 
     public static Scanner newBook = new Scanner(System.in);
 
@@ -22,8 +26,10 @@ public class Inventory {
         float price = newBook.nextFloat();
 
         System.out.println("Thank you for adding " + title  + "id: " + id + "priced at: $ " + price);
-        return new Book(id, title, price);
+        Book book1 = new Book(id, title, price);
+        Inventory.Books.add(book1);
 
+        return book1;
     }
 
 }
