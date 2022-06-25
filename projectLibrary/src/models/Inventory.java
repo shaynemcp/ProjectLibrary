@@ -1,9 +1,6 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Scanner;
+import java.util.*;
 
 public class Inventory {
 
@@ -33,20 +30,39 @@ public class Inventory {
 
         return book1;
     }
-    //TODO 3: write method for findById
-//    public static Book findBook(int id){
-//
-//        return book;
-//    }
+    //TODO 3: Exception handling for indexOutOfBoundsException
+    public static Book findBook(int id) throws IndexOutOfBoundsException{
+        System.out.print("Please enter 5 digit id: ");
+        id = newBook.nextInt();
+        int i;
+
+        for(i = 0; i < Books.size()-1; i++) {
+            if( Books.get(i).getId() == id) {
+                System.out.println("id: " + Books.get(i).getId() + " \"" + Books.get(i).getTitle() + "\" $" + Books.get(i).getPrice());
+            }
+        }
+
+        return new Book(id, Books.get(i).getTitle(),Books.get(i).getPrice());
+    }
 
     //TODO 2: write method for removeById
+    public static void removeBook(int id){
+      findBook(id);
+      System.out.println("Is this the book you would like to remove?");
+      Scanner delete = new Scanner(System.in);
+      int choice = delete.nextInt();
+
+      if(choice == 1){
+          newBook.close(); //closing scanner so that method does not infinitely invoke findBook
+          Books.remove(Books.indexOf(findBook(id)));
+
+      }
+    }
     public static List<Book> displayAllBooks() {
         List<Book> allBooks = Books;
-        allBooks.add(new Book(23232, "Interscope Records",232.2)); //Used as a filler book
-        //TODO 1: Get id & price fields to display
-        ListIterator<Book> bookListIterator = allBooks.listIterator();
-        while (bookListIterator.hasNext()) {
-            System.out.println(bookListIterator.next().getTitle());
+
+        for(int i = 0; i < allBooks.size(); i++) {
+            System.out.println("id: " + allBooks.get(i).getId() + " \"" + allBooks.get(i).getTitle() + "\" $" + allBooks.get(i).getPrice());
         }
         return allBooks;
     }
