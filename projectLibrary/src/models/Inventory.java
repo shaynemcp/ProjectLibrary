@@ -10,7 +10,7 @@ public class Inventory {
     public  Inventory() {
     }
 
-    static List<Book> Books = new ArrayList<>();
+    public static List<Book> Books = new ArrayList<>();
 
     public static Scanner newBook = new Scanner(System.in);
 
@@ -31,5 +31,16 @@ public class Inventory {
 
         return book1;
     }
+
+//    public static Book findBook(int id){
+//
+//        return book;
+//    }
+//
+//    public static List<Book> displayAllBooks() {
+//
+//        return;
+//    }
+
 
 }

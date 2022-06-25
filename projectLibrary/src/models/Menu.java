@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    static Book book;
+    private static Book book;
 
     public static void ask() {
         Scanner menu = new Scanner(System.in);
