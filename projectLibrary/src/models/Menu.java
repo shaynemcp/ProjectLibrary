@@ -11,13 +11,17 @@ public class Menu {
     public static void prompt() {
         System.out.println("Welcome to Project Library. Enter the integer corresponding to the action you would like to take.");
         System.out.print(" Enter 1 to add a book \n Enter 2 to remove a book \n Enter 3 to find a book by id \n Enter 4 to View all books \n Or to exit, enter 9 \n ");
+        ask();
     }
-    public static void ask() {
+    public static void ask() throws IllegalArgumentException{
         Scanner menu = new Scanner(System.in);
         int choice;
+
         do {
             choice = menu.nextInt();
-
+        if (choice >= 'a' && choice <= 'z' || choice >= 'A' && choice <= 'Z') {
+            throw new IllegalArgumentException("You have not entered an integer. Please try again.");
+        }
             switch (choice) {
                 case 1:
                     Inventory.addBook(book);
