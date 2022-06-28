@@ -13,7 +13,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class InventoryTest {
-
+    //TODO: Redirect input from addBook() to input streams, currently hangs on '1' input
     @Test
     void addBook() {
         Inventory testInventory = new Inventory();

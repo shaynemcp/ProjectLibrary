@@ -26,6 +26,25 @@ public class Inventory {
         return true;
     }
 
+    public static boolean isAlphabetic(String value){  //ArrayOutofBoundsException occurs when used
+        if(value == null ) {
+            return false;
+        }
+        char [] valArr = value.toCharArray();
+        for ( char v : valArr) {
+            if( valArr[v] >= 'a' && valArr[v] <= 'z' || valArr[v] >= 'A' && valArr[v] <= 'Z'){
+                try {
+                }
+                catch (InputMismatchException exception){
+                    return false;
+                }
+            }
+        }
+
+
+        return true;
+    }
+
     public static Scanner newTitle = new Scanner(System.in);
 
     //TODO: fix Bug where invalid input hangs on exception; also bug where price shows as long instead of double
@@ -33,19 +52,19 @@ public class Inventory {
         try {
             System.out.println("Please enter 5 digit id: ");
             int id = newBook.nextInt();
-            if (isInteger(String.valueOf(id)) == true) { //Math.floor(id) == id
+            if (isInteger(String.valueOf(id)) == true) { // gets stuck at exception if false
 
                 System.out.println("Please enter Book Title: ");
                 String title = newTitle.nextLine();
+                    System.out.println("Please enter Book Price: ");
+                    double price = newBook.nextFloat();
 
-                System.out.println("Please enter Book Price: ");
-                double price = newBook.nextFloat();
+                    System.out.println("Thank you for adding " + title  + " id: " + id + " priced at: $ " + price);
+                    Book book1 = new Book(id, title, price);
+                    Inventory.Books.add(book1);
 
-                System.out.println("Thank you for adding " + title  + " id: " + id + " priced at: $ " + price);
-                Book book1 = new Book(id, title, price);
-                Inventory.Books.add(book1);
+                    return book1;
 
-                return book1;
             }
         }
         catch (InputMismatchException exception) {
@@ -54,19 +73,24 @@ public class Inventory {
 
        return null;
     }
-    //TODO: fix Bug where last Book in list does not show
+    //TODO: handle IndexOutOfBoundsException for last Book in Books
     public static Book findBook(int id) throws IndexOutOfBoundsException{
         System.out.print("Please enter 5 digit id: ");
         id = newBook.nextInt();
-        int i;
 
-        for(i = 0; i < Books.size()-1; i++) {
-            if( Books.get(i).getId() == id) {
-                System.out.println("id: " + Books.get(i).getId() + " \"" + Books.get(i).getTitle() + "\" $" + Books.get(i).getPrice());
+        try {
+            for(int i = 0; i < Books.size(); i++) {
+                if( Books.get(i).getId() == id) {
+                    System.out.println("id: " + Books.get(i).getId() + " \"" + Books.get(i).getTitle() + "\" $" + Books.get(i).getPrice());
+                }
             }
+
         }
 
-        return new Book(id, Books.get(i).getTitle(),Books.get(i).getPrice());
+        catch (IndexOutOfBoundsException exception) {
+        }
+
+        return new Book(id, Books.get(id).getTitle(),Books.get(id).getPrice());
     }
 
     //TODO: fix bug where first Book is always removed since id == 0
