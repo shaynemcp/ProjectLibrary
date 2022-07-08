@@ -57,10 +57,10 @@ public class Inventory {
                 System.out.println("Please enter Book Title: ");
                 String title = newTitle.nextLine();
                     System.out.println("Please enter Book Price: ");
-                    double price = newBook.nextFloat();
+                    Double price = newBook.nextDouble();
 
                     System.out.println("Thank you for adding " + title  + " id: " + id + " priced at: $ " + price);
-                    Book book1 = new Book(id, title, price);
+                    Book book1 = new Book(id, title, price  );
                     Inventory.Books.add(book1);
 
                     return book1;
